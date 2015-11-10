@@ -218,7 +218,10 @@ col_spec_standardise <- function(file, col_names = TRUE, col_types = NULL,
   spec$cols
 }
 
-guess_types <- function(datasource, tokenizer, locale, n = 1000, n_max = -1) {
+guess_types <- function(datasource, tokenizer, locale,
+                        n = getOption("readr.guess_types.n",
+                                       default = 1000L),
+                        n_max = -1) {
   if (n_max > 0) {
     n <- min(n, n_max)
   }
